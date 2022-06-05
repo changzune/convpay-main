@@ -7,13 +7,13 @@ public class DiscountByConvenience implements DiscountInterface {
     public Integer getDiscountedAmount(PayRequest payRequest) {
         switch (payRequest.getConvenienceType()) {
             case G25:
-                break;
+                return payRequest.getPayAmount() * 8/ 10;
             case GU:
-                break;
+                return payRequest.getPayAmount() * 9/ 10;
             case SEVEN:
-                break;
+                return payRequest.getPayAmount();
         }
 
-
+        return payRequest.getPayAmount();
     }
 }

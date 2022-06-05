@@ -10,10 +10,13 @@ public class ConveniencePayService { //편의점 결제시스템
     //편의점 금액, 결제금액을 받기
     private final MoneyAdapter moneyAdapter = new MoneyAdapter();
     private final CardAdapter cardAdapter = new CardAdapter();
+    private final DiscountInterface discountInterface = new DiscountByPayMethod();
+    //private final DiscountInterface discountInterface = new DiscountByConvenience();
 
 
     public PayResponse pay(PayRequest payRequest) {
         PaymentInterface paymentInterface;
+
         if(payRequest.getPayMethodType() == PayMethodType.CARD){
             paymentInterface = cardAdapter;
         }else{
